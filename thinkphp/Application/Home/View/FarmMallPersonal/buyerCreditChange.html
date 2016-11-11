@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中农在线</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/Common/Css/common.css" type="text/css">
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/NZPersonal/Css/seller.css" type="text/css">
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/jquery.1.11.3.min.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/common.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/footer.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/layer/layer.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/laydate/laydate.js"></script>
+	<!--[if IE 8.0]><link href="{$Think.config.STYLE_URL}/Common/Css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE]> 
+	<script type="text/javascript"> 
+		(function(){if(!/*@cc_on!@*/0)return;var e = "header,footer,nav,article,section".split(','),i=e.length;while(i--){document.createElement(e[i])}})() 
+	</script> 
+	<![endif]-->
+</head>
+<body>
+	<include file = "Public/CommonPersonalHeader"/>
+	<section class="containar"><!-- 主体内容开始 -->
+		<div class="containarWrap clear">
+			<include file = "Public/FarmMallBuyerLeft"/>
+			<div class="rightBar"><!-- 右边内容开始 -->
+					<div class="rightPart"> <!-- 右边主体内容 -->
+						<div class="titles clear">
+						<h3>Hi! 我是买家</h3>
+						<a href="" style="display: none;">进入卖家中心></a>	<!-- 一半买家状态 -->
+						<a href="" class="shopOpen">申请开店</a> <!-- 申请开店的状态 -->
+					</div>
+					<!-- 右边的正文内容开始 -->
+					<div class="rightCont creditAdjustment" style="min-height: auto;"> 
+						<h3>授信额度调整</h3>
+						<form action="" method="" class="cm-form">
+							<div style="padding-top: 15px;">
+								<label for="">授信方：</label>
+								<input type="text" name="" id="" placeholder="填写申请人名字">
+								<label for="">会员号：</label>
+								<input type="text" name="" id="" placeholder="输入会员号">
+								<label for="">申请时间：</label>
+								<input type="text" name="" id="time1" style="width: 120px;margin:0;" class="laydate-icon">
+								<span class="h-dash">-</span>
+								<input type="text" name="" id="time2" style="width: 120px;margin:0;" class="laydate-icon">
+							</div>
+							<div style="margin-bottom: 35px;">
+								<label for="">授信额度：</label>
+								<input type="text" name="" id="" style="width: 100px;margin:0;">
+								<span class="h-dash">-</span>
+								<input type="text" name="" id="" style="width: 100px;margin:0;">
+								<input type="button" value="搜索" style="margin-left: 40px;">
+							</div>
+						</form>
+						<table style="margin-left: 20px;" class="h-tabel">
+							<tr style="border:1px solid #e5e5e5;">
+								<th style="width: 101px;">申请时间</th>
+								<th style="width: 218px;">授信方</th>
+								<th style="width: 130px;">会员号</th>
+								<th style="width: 110px;">总额</th>
+								<th style="width: 98px;">余额</th>
+								<th style="width: 96px;">需还款</th>
+								<th style="width: 190px">操作</th>
+							</tr>
+							<tr>
+								<td>2015-06-09</td>
+								<td>嘉兴市金泰农资有限公司</td>
+								<td>12015052517311</td>
+								<td>900000.00</td>
+								<td>30000.00</td>
+								<td>20000.00</td>
+								<td><span class="anwendung orange" onclick="quotaQuota()">申请调整额度</span><span class="refuse orange">还款</span></td>
+							</tr>
+							<tr>
+								<td>2015-06-09</td>
+								<td>嘉兴市金泰农资有限公司</td>
+								<td>12015052517311</td>
+								<td>900000.00</td>
+								<td>30000.00</td>
+								<td>20000.00</td>
+								<td><span class="anwendung orange">申请调整额度</span><span class="refuse orange">还款</span></td>
+							</tr>
+						</table>
+					</div>
+					<!-- 右边的正文内容结束 -->
+				</div>
+			</div><!-- 右边内容开始end -->
+		</div>
+	</section>
+	<include file ="Public/CommonPersonalFooter"/>
+<script type="text/javascript">
+
+// 日历1
+laydate({
+   elem: '#time1',  
+});
+
+// 日历2
+laydate({
+   elem: '#time2',
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中农在线</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/Common/Css/common.css" type="text/css">
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/CommonPersonal/Css/vipSet.css" type="text/css">
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/jquery.1.11.3.min.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/common.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/footer.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/Validation.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/laydate/laydate.js"></script>
+	
+	<!--[if IE 8.0]><link href="{$Think.config.STYLE_URL}/Common/Css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE]> 
+	<script type="text/javascript"> 
+		(function(){if(!/*@cc_on!@*/0)return;var e = "header,footer,nav,article,section".split(','),i=e.length;while(i--){document.createElement(e[i])}})() 
+	</script> 
+	<![endif]-->
+	
+</head>
+<body>
+	<include file = "Public/CommonPersonalHeader"/>
+	<section class="containar"><!-- 主体内容开始 -->
+		<div class="containarWrap clear">
+			<include file = "Public/PersonalLeftMenu"/>
+			<div class="rightBar cyWrap"><!-- 右边内容 -->
+				<div class="smallTitle">公司信息</div>
+				<div class="cyTitle" style="margin-top: 20px;">请填写真实的资料！</div>
+				<form action="" class="cyForm">
+					<div class="list">
+						<label for="">公司名称:</label>
+						<input type="text" name="" id="" onblur="comName(this)" onkeyup="comName(this)">
+						<p class="errorMsg"></p>
+					</div>
+					<div class="list">
+						<label for="">营业执照注册号:</label>
+						<input type="text" name="" id="" onblur="bisLicense(this)" onkeyup="bisLicense(this)">
+						<p class="errorMsg"></p>
+					</div>
+					<script type="text/javascript" src="__PUBLIC__/uploadify/jquery.uploadify.min.js"></script> <!-- 引入上传图片插件 -->
+					<link rel="stylesheet" href="__PUBLIC__/uploadify/uploadify.css" type="text/css">
+				    <script type="text/javascript">
+					    $(function() {
+					        $('#file_upload').uploadify({
+					            'swf'      : '__PUBLIC__/uploadify/uploadify.swf',    //指定上传控件的主体文件
+					            'uploader' : '/uploadify.php',   //指定服务器端上传处理文件
+					            //其他配置项
+					            'buttonClass' : 'upBtn',
+					            'buttonText' : '+',
+					            'height' : 100,
+					          	'width' : 100,
+					          	'cancelImg' : '__PUBLIC__/uploadify/uploadify-cancel.png',
+					          	'fileTypeExts' : '*.jpg;*.jpge;*.gif;*.png',
+                   				'fileSizeLimit' : '2MB',
+					            'onUploadSuccess' : function(file, data, response) {
+							            $('#' + file.id).find('.data').html('');
+				                        $("#upload_org_code_name").val(data);
+				                        $("#upload_org_code_img").attr("src",data);  
+				                        $("#upload_org_code_img").show();
+				                        $('.img1').show();
+				                        $(".upBtn").css("opacity","0");
+							        },
+							     //加上此句会重写onSelectError方法【需要重写的事件】
+							    'overrideEvents': ['onSelectError', 'onDialogClose'],
+                                //返回一个错误，选择文件的时候触发
+			                    'onSelectError':function(file, errorCode, errorMsg){
+			                        switch(errorCode) {
+			                            case -110:
+			                                alert("文件 ["+file.name+"] 大小超出系统限制的" + jQuery('#upload_org_code').uploadify('settings', 'fileSizeLimit') + "大小！");
+			                                break;
+			                            case -120:
+			                                alert("文件 ["+file.name+"] 大小异常！");
+			                                break;
+			                            case -130:
+			                                alert("文件 ["+file.name+"] 类型不正确！");
+			                                break;
+			                        }
+			                    },
+					        });
+					    });
+					</script>
+				    </script>
+					<div class="list">
+						<label for="" class="photo">营业执照副本照片:</label>
+						<div class="upBox">
+							<!-- <img src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Image/delete.png" alt="" class="img1" style="display: none;"> -->
+							<div class="img1">编辑图片</div>
+							<input id="file_upload" name="file_upload" type="file" multiple="true">
+							<img style="display: none;position: absolute;top:0px;left: 0px;" id="upload_org_code_img" src="" width="102" height="102">
+							<div id="preview">
+								  <input type="hidden" name="upload_org_code_name" id="upload_org_code_name" />
+                            </div>
+							<span>单张图片最大不能超过1M，图片格式仅限：jpg, gif, png, jpeg</span>
+						</div>
+					</div>
+					<div class="list">
+						<label for="" class="range">经营范围:</label>
+						<textarea placeholder="请用简短文字描述经营范围" cols="40" rows="" onblur="bisScope(this)" onkeyup="bisScope(this)"></textarea>
+						<p class="errorMsg"></p>
+					</div>
+					<div class="list">
+						<label for="">注册资本:</label>
+						<input type="text" name="" id="" onkeyup="capital(this)" onblur="capital(this)">
+						<p class="errorMsg"></p>
+					</div>
+					<div class="list">
+						<label for="">注册地址:</label>
+						<input type="text" name="" id="" onkeyup="loginAds(this)" onblur="loginAds(this)">
+						<p class="errorMsg"></p>
+					</div>
+					<div class="list">
+						<label for="">法人代表:</label>
+						<input type="text" name="" id="" onblur="corporate(this)" onkeyup="corporate(this)">
+						<p class="errorMsg"></p>
+					</div>
+					<div class="list">
+						<label for="">成立时间:</label>
+						<input type="text" name="" id="time1">
+						<p class="errorMsg"></p>
+					</div>
+					<input type="submit" value="提交" class="biSub" id="sub">
+				</form>
+			</div><!-- 右边内容end -->
+		</div>
+	</section>	<!-- 主体内容end -->
+	<include file ="Public/CommonPersonalFooter"/>
+<script type="text/javascript">
+
+		// 日历1
+		laydate({
+		   elem: '#time1',  
+		});
+		$('#sub').click(function(){
+			$('input[type=text]').trigger('blur');
+			// var len = $('.errorMsg').length;
+			var txt = $('.errorMsg').text();
+			if($('.errorMsg').text()!==''){
+				return false;
+			}else if($('#time1').val()==''){
+				$('#time1').focus();
+				alert('请输入成立时间');
+				return false;
+			}else{
+				return true;
+
+			}
+		})
+		$(document).ready(function(){
+			$('.img1').click(function(){
+				$('#upload_org_code_img').hide();
+				$(this).hide();
+			})
+		})
+</script>
+</body>
+</html>

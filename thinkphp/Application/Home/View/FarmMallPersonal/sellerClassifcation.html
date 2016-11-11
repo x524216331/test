@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>中农在线</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/Common/Css/common.css" type="text/css">
+	<link rel="stylesheet" href="{$Think.config.STYLE_URL}/PersonalCenter/NZPersonal/Css/seller.css" type="text/css">
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/Common/Js/jquery.1.11.3.min.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/common.js"></script>
+	<script type="text/javascript" src="{$Think.config.STYLE_URL}/PersonalCenter/Common/Js/footer.js"></script>
+	<!--[if IE 8.0]><link href="{$Think.config.STYLE_URL}/Common/Css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+	<!--[if IE]> 
+	<script type="text/javascript"> 
+		(function(){if(!/*@cc_on!@*/0)return;var e = "header,footer,nav,article,section".split(','),i=e.length;while(i--){document.createElement(e[i])}})() 
+	</script> 
+	<![endif]-->
+</head>
+<body>
+	<include file = "Public/CommonPersonalHeader"/>
+	<section class="containar"><!-- 主体内容开始 -->
+		<div class="containarWrap clear">
+			<include file = "Public/FarmMallSellerLeft"/>
+			<div class="rightBar"><!-- 右边内容开始 -->
+				<div class="rightPart"> <!-- 右边主体内容 -->
+					<div class="titles clear">
+						<h3>Hi! 我是卖家</h3>
+						<a href="">进入买家中心></a>
+					</div>
+					<div class="goodsSort"> <!-- 右边评价部分 -->
+						<h4>商品分类管理</h4>
+						<div class="sortBox">
+							<form action="" method="">
+								<input type="checkbox" name="" id="checkAll" style="margin-left: 15px;"><label class="f12">全选<span id="batchRemove">批量删除</span></label>
+								<table id="test">
+									<tr style="border:1px solid #e5e5e5;width: 100%;text-align: left;">
+										<th style="width: 322px;text-indent: 31px;">分类名称</th>
+										<th style="width: 112px;">上移</th>
+										<th style="width: 136px;">下移</th>
+										<th style="width: auto;">操作</th>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="11">
+										</td>
+										<td>
+											<div class="img1" onclick="goUp(this)"></div>
+										</td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="22">
+										</td>
+										<td><div class="img1" onclick="goUp(this)"></div></td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="333">
+										</td>
+										<td><div class="img1" onclick="goUp(this)"></div></td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="44">
+										</td>
+										<td><div class="img1" onclick="goUp(this)"></div></td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="55">
+										</td>
+										<td><div class="img1" onclick="goUp(this)"></div></td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" name="" id=""><input type="text" name="" id="" value="66">
+										</td>
+										<td><div class="img1" onclick="goUp(this)"></div></td>
+										<td><div class="img2" onclick="downGo(this)"></div></td>
+										<td><span class="del" onclick="del(this)">删除</span></td>
+									</tr>
+								</table>
+								<div class="goAdd">
+									<img src="__PUBLIC__/mall/personalCenter/FarmMallPersonal/JIC/Image/issueGoodsAdd.png" alt=""><span>继续添加分类</span>
+								</div>
+							</form>
+						</div>
+					</div><!-- 右边评价结束 -->
+				</div>
+			</div><!-- 右边内容开始end -->
+		</div>
+	</section>
+	<include file ="Public/CommonPersonalFooter"/>
+	<script type="text/javascript">
+	
+$(function(){
+	//全选按钮
+	$('#checkAll').click(function(){
+		if($(this).prop("checked")){
+			$('#test input[type=checkbox]').each(function(){
+				$(this).prop("checked",true);                //复选框全选中
+			})
+		}else{
+			$('#test input[type=checkbox]').each(function(){
+				$(this).prop("checked",false); 				//复选框全取消
+			})
+		}
+	})
+	//批量删除按钮
+	$('#batchRemove').click(function(){
+		$('#test input[type=checkbox]').each(function(){
+				if($(this).prop("checked")){
+					$(this).parent().parent().remove();              
+				}
+				
+			})
+	})
+	//单个复选框按钮
+	$('#test input[type=checkbox]').click(function(){
+		var len = $('#test input[type=checkbox]:checked').length;
+		var len2 = $('#test input[type=checkbox]').length;
+		if($(this).prop("checked")){
+			if(len == len2){
+				$('#checkAll').prop("checked",true);
+			}
+		}else{
+			$('#checkAll').prop("checked",false);
+		}
+	})
+
+//继续添加分类
+	$('.goAdd').click(function(){
+		$("#test").append('<tr><td><input type="checkbox" name="" id=""><input type="text" name="" id="" ></td><td><div class="img1" onclick="goUp(this)"></div></td><td><div class="img2" onclick="downGo(this)"></div></td><td><span class="del" onclick="del(this)">删除</span></td></tr>');
+	 })
+
+
+	
+
+})
+//上移
+function goUp(obj){	
+		var $tr	= $(obj).parent().parent('tr');
+		if ($tr.index()!=1) {
+			$tr.fadeOut().fadeIn();
+			$tr.prev().before($tr);
+		}
+	}
+
+//下移
+function downGo(obj){
+	var $tr = $(obj).parent().parent('tr'); //下移图标的父元素
+	var down = $('.img2');					//下图标
+	var len = down.length;					
+	if($tr.index() != len){
+		$tr.fadeOut().fadeIn();
+		$tr.next().after($tr);
+	}
+}
+//删除按钮
+function del(obj){
+	$(obj).parent().parent('tr').remove(); //删除父元素之内的tr内容
+}
+</script>
+</body>
+</html>
